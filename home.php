@@ -1,8 +1,14 @@
 <?php
-	$username = "Kristel S�da";
+	$username = "Kristel Süda";
 	$fulltimenow = date("d.m.Y H:i:s");
 	$hournow = date("H");
 	$partofday = "lihtsalt aeg";
+	
+	$weekdaynameset = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
+	$monthnameset = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
+	//echo $weekdaynameset[1];
+	$weekdaynow = date("N");
+	
 	if($hournow < 7){
 		$partofday = "uneaeg";
 	}
@@ -13,12 +19,12 @@
 	//vaatame semestri kulgemist
 	$semesterstart = new DateTime("2020-8-31");
 	$semesterend = new DateTime("2020-12-13");
-	//selgitame v�lja nende vahe ehk erinevuse
+	//selgitame välja nende vahe ehk erinevuse
 	$semesterduration = $semesterstart->diff($semesterend);
-	//leiame selle p�evade arvuna
+	//leiame selle päevade arvuna
 	$semesterdurationdays = $semesterduration->format("%r%a");
 	
-	//t�nane p�ev
+	//tänane päev
 	$today = new DateTime("now");
 	//if($fromsemesterstartdays < 0) {semester pole peale hakanud}
 	
@@ -32,11 +38,12 @@
 
 </head>
 <body>
+  <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
   <h1 style="color:#DC32A3;">Cat Shrine</h1>
   <h3 style="color:#DC324E;"><?php echo $username; ?></h3>
-  <p style="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt �ks tore kassipilt :)</p>
+  <p style="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt üks tore kassipilt :)</p>
   <img src="https://i.chzbgr.com/full/9375248640/h8C800AA5/necklace" alt="Valge kass kahe kaelakeega">
-  <p>Lehe avamise hetkel oli: <?php echo $fulltimenow; ?>.</p>
+  <p>Lehe avamise hetkel oli: <?php echo $weekdaynameset[$weekdaynow - 1] .", " .$fulltimenow; ?>.</p>
   <p><?php echo "Parajasti on " .$partofday ."."; ?></p>
 	
 </body>
