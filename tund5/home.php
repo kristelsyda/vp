@@ -70,7 +70,7 @@
 			//<img src="../img/pildifail" alt="tekst">
 			//$imghtml .= '<img src="../vp_pics/' .$picfiles[$i] .'" alt="Tallinna Ülikool">';
 	//}
-	$imghtml = '<img src='../vp_pics/' .$picfiles[mt_rand(0,($piccount - 1))] '" alt="Tallinna Ülikool">';
+	$imghtml = '<img src="../vp_pics/' .$picfiles[mt_rand(0,($piccount - 1))] .'" alt="Tallinna Ülikool">';
 	
 	require("header.php");
 ?>
@@ -90,6 +90,8 @@
   <p>Lehe avamise hetkel oli: <?php echo $weekdaynameset[$weekdaynow - 1] .", " .$fulltimenow; ?>.</p>
   <p><?php echo "Parajasti on " .$partofday ."."; ?></p>
   <p><?php echo $semesterinfo ?></p>
+  <hr>
+  <p>Looge omale <a href="addnewuser.php">kasutajakonto</a>!</p>
   <hr>
   <?php echo $imghtml; ?>
 </body>
