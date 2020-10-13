@@ -112,7 +112,6 @@
 
   <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
   <h1 style="color:#DC32A3;">Cat Shrine</h1>
-  <h3 style="color:#DC324E;"><?php echo $username; ?></h3>
   <p style="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt üks tore kassipilt :)</p>
   <p>
   <img src="https://i.chzbgr.com/full/9375248640/h8C800AA5/necklace" alt="Valge kass kahe kaelakeega">
