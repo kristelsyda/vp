@@ -123,12 +123,11 @@
 ?>
 
   <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
-  <h1><?php echo $username; ?></h1>
+  <h1>Uue kasutajakonto loomine</h1>
   <ul>
    <li><a href="home.php">Avalehele</a></li>
   </ul>
     
-
   <hr>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <label for="firstnameinput">Eesnimi:</label>
@@ -162,19 +161,19 @@
 	  <label for="birthmonthinput">Sünnikuu: </label>
 	  <?php
 	    echo '<select name="birthmonthinput" id="birthmonthinput">' ."\n";
-		echo '<option value="" selected disabled>kuu</option>' ."\n";
-		for ($i = 1; $i < 13; $i ++){
-			echo '<option value="' .$i .'"';
-			if ($i == $birthmonth){
-				echo " selected";
+			echo '<option value="" selected disabled>kuu</option>' ."\n";
+			for ($i = 1; $i < 13; $i ++){
+				echo '<option value="' .$i .'"';
+				if ($i == $birthmonth){
+					echo " selected";
+				}
+				echo ">" .$monthnameset[$i - 1] ."</option> \n";
 			}
-			echo ">" .$monthnameset[$i - 1] ."</option> \n";
-		}
-		echo "</select> \n";
+			echo "</select> \n";
 	  ?>
 	  <label for="birthyearinput">Sünniaasta: </label>
-		<?php
-			echo '<select name="birthyearinput" id="birthyearinput">' ."\n";
+	  <?php
+	    echo '<select name="birthyearinput" id="birthyearinput">' ."\n";
 			echo '<option value="" selected disabled>aasta</option>' ."\n";
 			for ($i = date("Y") - 10; $i >= date("Y") - 110; $i --){
 				echo '<option value="' .$i .'"';
@@ -184,7 +183,7 @@
 				echo ">" .$i ."</option> \n";
 			}
 			echo "</select> \n";
-		?>
+	  ?>
 	  <br>
 	  <span><?php echo $birthdateerror ." " .$birthdayerror ." " .$birthmontherror ." " .$birthyearerror; ?></span>
 	  <br>
