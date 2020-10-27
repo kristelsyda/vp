@@ -1,40 +1,58 @@
 <?php
-  require("usesession.php");
+  session_start();
+  
+  //kui pole sisse logitud
+  if(!isset($_SESSION["userid"])){
+	  //jõuga sisselogimise lehele
+	  header("Location: page.php");
+  }
+  //välja logimine
+  if(isset($_GET["logout"])){
+	  session_destroy();
+	   header("Location: page.php");
+	   exit();
+  }
+  
+  //require("usesession.php");
   //var_dump($_POST);
   require("../../../config.php");
   $database = "if20_kristel_sy_2";
   
-  if(isset($_POST["ideasubmit"]) and !empty($_POST["ideainput"])){
-	  //loome andmebaasiga ühenduse
-	  $conn = new mysqli($serverhost, $serverusername, $serverpassword, $database);
-	  //valmistan ette SQL käsu andmete kirjutamiseks
-	  $stmt = $conn->prepare("INSERT INTO myideas (idea) VALUES(?)");
-	  echo $conn->error;
-	  //i - integer, d - decimal, s - string 
-	  $stmt->bind_param("s", $_POST["ideainput"]);
-	  $stmt->execute();
-	  $stmt->close();
-	  $conn->close();
+  if(isset($_POST["submitnonsens"])){
+	  if(!empty($_POST["nonsens"])){
+		  //andmebaasi lisamine
+		  //loome andmebaasi ühenduse
+		  $conn = new mysqli($serverhost, $serverusername, $serverpassword, $database);
+		  //valmistame ette SQL käsu andmete kirjutamiseks
+		  $stmt = $conn->prepare("INSERT INTO nonsens (nonsensidea) VALUES(?)");
+		  echo $conn->error;
+		  //s - string, i -integer, d-decimal
+		  $stmt->bind_param("s", $_POST["nonsens"]);
+		  $stmt->execute();
+		  //käsk ja ühendus sulgeda
+		  $stmt->close();
+		  $conn->close();
+	  } 
   }
   
-  $username = "Kristel Süda";
+  //$username = "Kristel Süda";
   require("header.php");
 ?>
 
-  <<img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
-  <h1 style="color:#DC32A3;">Cat Shrine</h1>
-  <h3 style="color:#DC324E;"><?php echo $username; ?></h3>
-  <p style="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt üks tore kassipilt :)</p>
+  <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
+  <h1><?php echo $_SESSION["userfirstname"] ." " .$_SESSION["userlastname"]; ?> programmeerib veebi</h1>tyle="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt üks tore kassipilt :)</p>
+  
   <ul>
-  <li><a href="home.php">Avalehele</a></li>
-  <li><a href="?logout=1">Logi välja</a>!</li>
+	<li><a href="home.php">Avalehele</a></li>
+		<li><a href="?logout=1">Logi välja</a>!</li>
   </ul>
+  
   <form method="POST">
     <label>Kirjutage oma esimene pähe tulev mõte ... või teine</label>
-		<input type="text" name="ideainput" placeholder="mõttekoht">
-		<input type="submit" name="ideasubmit" value="Saada mõte teele!">
+		<input type="text" name="nonsens" placeholder="mõttekoht">
+		<input type="submit" value="Saada mõte teele!" name="submitnonsens">
   </form>
-  <hr>
+  
 
 </body>
 </html>

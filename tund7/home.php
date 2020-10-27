@@ -1,9 +1,22 @@
 <?php
-	require("usesession.php");
+	//require("usesession.php");
 	//var_dump($_POST);
 		
 	//$username = "Kristel Süda";
-		
+	session_start();
+  
+  //kui pole sisse logitud
+  if(!isset($_SESSION["userid"])){
+	  //jõugu sisselogimise lehele
+	  header("Location: page.php");
+  }
+  //välja logimine
+  if(isset($_GET["logout"])){
+	  session_destroy();
+	   header("Location: page.php");
+	   exit();
+  }
+	
 	require("header.php");
 ?>
   <h1><?php echo $_SESSION["userfirstname"] ." " .$_SESSION["userlastname"]; ?></h1>
@@ -12,7 +25,9 @@
   <p style="font-family:Courier; color:#DC6B32;">Sisu pole. Lihtsalt üks tore kassipilt :)</p>
   <p>
   <img src="https://i.chzbgr.com/full/9375248640/h8C800AA5/necklace" alt="Valge kass kahe kaelakeega">
+  
   <ul>
+  <p><a href="?logout=1">Logi välja</a>!</p>
     <li><a href="addideas.php">Oma mõtete salvestamine</a></li>
 	<li><a href="listideas.php">Mõtete vaatamine</a></li>
 	<li><a href="listfilm.php">Filmide nimekirja vaatamine</a></li>
@@ -22,7 +37,6 @@
 	<li><a href="userprofile.php">Minu kasutajaprofiil</a></li>
   </ul>
   
-  <hr>
   
 </body>
 </html>

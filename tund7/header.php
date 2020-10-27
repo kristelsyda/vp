@@ -2,25 +2,22 @@
 <html lang="et">
 <head>
   <meta charset="utf-8">
-  <title><?php echo $username; ?></title>
+  <title>Veebileht</title>
   <style>
   <?php
-	echo "body { \n";
-	if(isset($_SESSION["userbgcolor"])){
-		echo "\t \t background-color: " .$_SESSION["userbgcolor"] ."; \n";
+    echo "body { \n";
+	if(isset($_SESSION["bgcolor"])){
+		echo "background-color: " .$_SESSION["bgcolor"] ."; \n";
 	} else {
-		echo "\t \t background-color: #FFFFFF; \n";
+		echo "background-color: #FFFFFF; \n";
 	}
-	if(isset($_SESSION["usertxtcolor"])){
-		echo "\t \t color: " .$_SESSION["usertxtcolor"] ."; \n";
+	if(isset($_SESSION["txtcolor"])){
+		echo "color: " .$_SESSION["txtcolor"] ."\n";
 	} else {
-		echo "\t \t color: #000000; \n";
+		echo "color: #000000; \n";
 	}
-	echo "\t } \n";
+	echo "} \n";
   ?>
-  
   </style>
-    
 </head>
 <body>
-<img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
