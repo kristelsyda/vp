@@ -17,8 +17,8 @@
 		  //käsk ja ühendus sulgeda
 		  $stmt->close();
 		  $conn->close();
-	  } 
-  }
+	} 
+  
   
   //$username = "Kristel Süda";
   require("header.php");
