@@ -1,5 +1,5 @@
 <?php
-    
+   
   require("usesession.php");
   //loeme andmebaasi login ifo muutujad
   require("../../../config.php");
@@ -58,7 +58,7 @@
       
   <ul>
     <li><a href="home.php">Avalehele</a></li>
-	<li><a href="?logout=1">Logi välja</a>!</li>
+		<li><a href="?logout=1">Logi välja</a>!</li>
   </ul>
   
   <h2>Määrame filmistuudio</h2>
